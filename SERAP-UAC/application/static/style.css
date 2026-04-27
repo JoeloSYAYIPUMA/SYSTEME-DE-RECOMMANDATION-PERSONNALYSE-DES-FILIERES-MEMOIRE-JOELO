@@ -1,0 +1,250 @@
+:root {
+    --bg-dark: #0a0c10;
+    --bg-card: #111827;
+    --border-glow: rgba(139, 92, 246, 0.3);
+    --accent-primary: #8b5cf6;
+    --accent-secondary: #06b6d4;
+    --accent-tertiary: #f59e0b;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0c10 0%, #1a1f2e 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+.particle-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="10" cy="10" r="3" fill="rgba(139,92,246,0.2)"/><circle cx="50" cy="80" r="2" fill="rgba(6,182,212,0.15)"/><circle cx="120" cy="30" r="4" fill="rgba(139,92,246,0.1)"/><circle cx="170" cy="140" r="2" fill="rgba(6,182,212,0.2)"/><circle cx="30" cy="170" r="3" fill="rgba(139,92,246,0.15)"/></svg>');
+    background-repeat: repeat;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.serap-hero {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glow);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.icon-circle.small {
+    width: 40px;
+    height: 40px;
+}
+
+.card {
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.1));
+    border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+    color: var(--text-primary);
+}
+
+.form-floating > label {
+    color: var(--text-secondary);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), #7c3aed);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+}
+
+.skill-badge {
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    background: rgba(139, 92, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+.recommendation-card {
+    transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateX(5px);
+}
+
+.rank-badge {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.rank-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.score-circle {
+    width: 70px;
+    height: 70px;
+    background: rgba(139, 92, 246, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent-primary);
+}
+
+.score-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--accent-primary);
+}
+
+.metric-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.explanation-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    border-left: 3px solid var(--accent-primary);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+    text-align: center;
+}
+
+.serap-badge {
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.cycle-option {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cycle-option:hover {
+    transform: translateY(-5px);
+    background: rgba(139, 92, 246, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+    .serap-hero {
+        text-align: center;
+    }
+    
+    .rank-badge {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .rank-number {
+        font-size: 1rem;
+    }
+}
+

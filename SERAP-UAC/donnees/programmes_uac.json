@@ -1,0 +1,68 @@
+{
+  "source": {
+    "site": "https://www.uaconline.edu.cd/",
+    "date_consultation": "2026-04-23"
+  },
+  "domaines": [
+    {
+      "nom": "Sciences de l'Homme et de la Société",
+      "programmes": [
+        {"code": "LCA", "nom": "Communication Appliquée", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LPH", "nom": "Philosophie", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "MCED", "nom": "Maîtrise en Communication, Education et Développement", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MIC", "nom": "Maîtrise en Information Technique et Documentaire", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MPICP", "nom": "Maîtrise en Presse, Information et Communication Publique", "cycle": "Master", "niveau": "2ème cycle"}
+      ]
+    },
+    {
+      "nom": "Sciences Économiques et de Gestion",
+      "programmes": [
+        {"code": "LIAGE", "nom": "Informatique Appliquée à la Gestion des Entreprises", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LIGAF", "nom": "Informatique de Gestion et Anglais des Affaires", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LGEOT", "nom": "Gestion des Entreprises et Organisation du Travail", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LMG", "nom": "Management Général", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "MIMSI", "nom": "Master en Informatique Appliquée à la Gestion - Spécialité IMSI", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MSRI", "nom": "Master en Informatique de Gestion - Spécialité SRI", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MEIGP", "nom": "Master en Entrepreneuriat, Innovation et Gestion des PME", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MGRH", "nom": "Master en Gestion des Ressources Humaines", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "DBA", "nom": "Doctorat en Business Administration", "cycle": "Doctorat", "niveau": "3ème cycle"},
+        {"code": "PhD_ESG", "nom": "Doctorat en Sciences Économiques et de Gestion", "cycle": "Doctorat", "niveau": "3ème cycle"}
+      ]
+    },
+    {
+      "nom": "Sciences Agronomiques et Environnement",
+      "programmes": [
+        {"code": "LGAP", "nom": "Gestion et Administration des Projets", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LDR", "nom": "Développement Rural", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "MGAP", "nom": "Maîtrise en Gestion et Administration des Projets", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MGEA", "nom": "Maîtrise en Gestion des Entreprises Agricoles", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MEDD", "nom": "Maîtrise en Environnement et Développement Durable", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "PhD_SAE", "nom": "Doctorat en Sciences Agronomiques et Environnement", "cycle": "Doctorat", "niveau": "3ème cycle"}
+      ]
+    },
+    {
+      "nom": "Sciences et Technologie",
+      "programmes": [
+        {"code": "LARC", "nom": "Architecture", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LGC", "nom": "Génie Civil", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LGE", "nom": "Génie Électrique", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LGI", "nom": "Génie Informatique", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "LGM", "nom": "Génie Mécanique", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "MAP", "nom": "Maîtrise en Architecture et Paysage", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MASOA", "nom": "Maîtrise en Structure et Ouvrage d'Art", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MEE", "nom": "Maîtrise en Electronique et Energetique", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "MSIIL", "nom": "Maîtrise en Systèmes Intelligents & Ingénierie Logicielle", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "PhD_ST", "nom": "Doctorat en Sciences et Technologie", "cycle": "Doctorat", "niveau": "3ème cycle"}
+      ]
+    },
+    {
+      "nom": "Sciences Psychologiques de l'Education",
+      "programmes": [
+        {"code": "LPSY", "nom": "Psychologie", "cycle": "Licence", "niveau": "1er cycle"},
+        {"code": "MPC", "nom": "Maîtrise en Psychologie Clinique", "cycle": "Master", "niveau": "2ème cycle"},
+        {"code": "PhD_SPE", "nom": "Doctorat en Sciences Psychologiques de l'Education", "cycle": "Doctorat", "niveau": "3ème cycle"}
+      ]
+    }
+  ]
+}
+

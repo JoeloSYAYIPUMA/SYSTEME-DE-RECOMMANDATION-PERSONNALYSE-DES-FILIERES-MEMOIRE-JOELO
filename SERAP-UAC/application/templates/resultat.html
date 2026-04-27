@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}SERAP-UAC | Résultats{% endblock %}
+
+{% block content %}
+<div class="container py-4 py-lg-5">
+    <header class="serap-hero text-white p-4 p-md-5 rounded-4 shadow-lg mb-5" data-aos="fade-down">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="icon-circle">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                    <div>
+                        <h1 class="display-5 fw-bold mb-0">Résultats</h1>
+                        <p class="lead mb-0 gradient-text">Recommandations personnalisées</p>
+                    </div>
+                </div>
+                <p class="mb-0 opacity-90">
+                    <i class="fas fa-robot me-2"></i> {{ resultat.resume_systeme }}
+                </p>
+            </div>
+            <div class="text-lg-end">
+                <div class="d-flex gap-2 flex-wrap justify-content-lg-end">
+                    <a class="btn btn-outline-light rounded-pill px-4" href="/">
+                        <i class="fas fa-arrow-left me-2"></i> Nouvelle recherche
+                    </a>
+                    <a class="btn btn-light rounded-pill px-4" href="/historique">
+                        <i class="fas fa-clock-rotate-left me-2"></i> Historique
+                    </a>
+                    <button id="themeToggle" class="btn btn-outline-light rounded-pill px-4">
+                        <i class="fas fa-moon me-2"></i> Sombre
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profil interprété -->
+    <section class="mb-5" data-aos="fade-up">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="card-header py-3">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="fas fa-user-graduate fa-lg"></i>
+                    <h2 class="h5 fw-bold mb-0">Profil interprété</h2>
+                    <span class="ms-auto badge bg-primary bg-opacity-50 rounded-pill">
+                        <i class="fas fa-chart-simple me-1"></i> {{ champs_renseignes }} champs renseignés
+                    </span>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex flex-wrap gap-2">
+                    {% for cle, valeur in profil.items() %}
+                    {% if valeur is not none and cle != 'cycle' %}
+                    <div class="skill-badge" data-aos="zoom-in">
+                        <i class="fas fa-check-circle me-1"></i>
+                        <strong>{{ libelles.get(cle, cle) }}</strong> : {{ valeur }}/20
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Résultats -->
+    <section class="row g-4">
+        {% for reco in resultat.top_k %}
+        <div class="col-12" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden recommendation-card">
+                <div class="card-header py-3">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rank-badge">
+                                <i class="fas fa-trophy fa-2x"></i>
+                                <span class="rank-number">{{ loop.index }}</span>
+                            </div>
+                            <div>
+                                <div class="small opacity-75">
+                                    <i class="fas fa-building me-1"></i> {{ reco.domaine }}
+                                </div>
+                                <h2 class="h4 fw-bold mb-0">{{ reco.filiere }}</h2>
+                            </div>
+                        </div>
+                        <div class="score-circle">
+                            <div class="score-value">{{ "%.0f"|format(reco.score_final * 100) }}<span class="small">%</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-3 col-6">
+                            <div class="metric-card">
+                                <div class="metric-label">
+                                    <i class="fas fa-calculator me-1"></i> Score final
+                                </div>
+                                <div class="metric-value">{{ "%.3f"|format(reco.score_final) }}</div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar bg-primary" style="width: {{ reco.score_final * 100 }}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="metric-card">
+                                <div class="metric-label">
+                                    <i class="fas fa-gavel me-1"></i> Règles experts
+                                </div>
+                                <div class="metric-value">{{ "%.3f"|format(reco.score_regles) }}</div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: {{ reco.score_regles * 100 }}%; background: #06b6d4;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="metric-card">
+                                <div class="metric-label">
+                                    <i class="fas fa-project-diagram me-1"></i> Graphe
+                                </div>
+                                <div class="metric-value">{{ "%.3f"|format(reco.score_graphe) }}</div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: {{ reco.score_graphe * 100 }}%; background: #f59e0b;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="metric-card">
+                                <div class="metric-label">
+                                    <i class="fas fa-brain me-1"></i> CNN
+                                </div>
+                                <div class="metric-value">{{ "%.3f"|format(reco.score_cnn) }}</div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: {{ reco.score_cnn * 100 }}%; background: #10b981;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="explanation-box">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <span>{{ reco.explication }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <div class="text-center mt-5" data-aos="fade-up">
+        <a href="/" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg">
+            <i class="fas fa-redo-alt me-2"></i> Évaluer un nouveau profil
+            <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+(function() {
+    const btn = document.getElementById('themeToggle');
+    function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-bs-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('serap_theme', next);
+        document.documentElement.setAttribute('data-bs-theme', next);
+        if (btn) btn.innerHTML = next === 'dark' ? '<i class="fas fa-moon me-2"></i> Sombre' : '<i class="fas fa-sun me-2"></i> Clair';
+    }
+    if (btn) btn.addEventListener('click', toggleTheme);
+})();
+
+// Animation des métriques
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.metric-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    observer.observe(card);
+});
+</script>
+{% endblock %}

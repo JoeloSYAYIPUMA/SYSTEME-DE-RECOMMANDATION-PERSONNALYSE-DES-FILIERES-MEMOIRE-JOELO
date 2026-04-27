@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}SERAP-UAC | Login{% endblock %}
+
+{% block content %}
+<div class="container py-4 py-lg-5">
+    <header class="serap-hero text-white p-4 p-md-5 rounded-4 shadow-lg mb-4" data-aos="fade-down">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3">
+            <div>
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="icon-circle">
+                        <i class="fas fa-right-to-bracket fa-2x"></i>
+                    </div>
+                    <div>
+                        <h1 class="display-6 fw-bold mb-0">Connexion</h1>
+                        <p class="lead mb-0 gradient-text">Accès administrateur</p>
+                    </div>
+                </div>
+                <p class="mb-0 opacity-90">
+                    <i class="fas fa-shield-halved me-2"></i> L’historique est protégé.
+                </p>
+            </div>
+            <div class="text-lg-end">
+                <a class="btn btn-outline-light rounded-pill px-4" href="/">
+                    <i class="fas fa-house me-2"></i> Accueil
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden" data-aos="fade-up">
+                <div class="card-body p-4 p-lg-5">
+                    {% if error %}
+                    <div class="alert alert-danger rounded-4">
+                        <i class="fas fa-triangle-exclamation me-2"></i> {{ error }}
+                    </div>
+                    {% endif %}
+
+                    <form method="post" action="/login">
+                        <input type="hidden" name="next" value="{{ next or '/' }}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nom d’utilisateur</label>
+                            <input class="form-control form-control-lg rounded-4" name="username" autocomplete="username" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control form-control-lg rounded-4" name="password" autocomplete="current-password" required>
+                        </div>
+                        <button class="btn btn-primary w-100 rounded-pill py-2" type="submit">
+                            <i class="fas fa-right-to-bracket me-2"></i> Se connecter
+                        </button>
+                    </form>
+
+                    <div class="text-secondary small mt-3">
+                        Identifiants par défaut : <code>admin</code> / <code>admin</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

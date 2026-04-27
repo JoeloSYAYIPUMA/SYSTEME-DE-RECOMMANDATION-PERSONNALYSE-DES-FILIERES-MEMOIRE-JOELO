@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: serap-uac
+    env: python
+    plan: free
+    rootDir: SERAP-UAC
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn application.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: SERAP_ADMIN_USER
+        value: admin
+      - key: SERAP_ADMIN_PASS
+        value: admin
+      - key: SERAP_SECRET_KEY
+        generateValue: true

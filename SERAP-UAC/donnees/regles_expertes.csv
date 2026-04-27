@@ -1,0 +1,14 @@
+code_regle,type_regle,code_filiere,filiere,si,alors,priorite,explication
+R_LARC_DESSIN,admissibilite,LARC,Architecture,dessin >= 15,augmenter_score_symbolique(LARC),1,La filière Architecture valorise fortement la compétence dessin.
+R_LARC_DESSIN_FAIBLE,exclusion_relative,LARC,Architecture,dessin < 11,reduire_score_symbolique(LARC),2,Un niveau trop faible en dessin fragilise l'adéquation avec Architecture.
+R_LCA_FRANCAIS,admissibilite,LCA,Communication Appliquée,francais >= 14,augmenter_score_symbolique(LCA),1,La filière Communication Appliquée valorise fortement la compétence francais.
+R_LCA_COMMUNICATION,admissibilite,LCA,Communication Appliquée,communication >= 15,augmenter_score_symbolique(LCA),1,La filière Communication Appliquée valorise fortement la compétence communication.
+R_LDR_BIOLOGIE,admissibilite,LDR,Développement Rural,biologie >= 12,augmenter_score_symbolique(LDR),1,La filière Développement Rural valorise fortement la compétence biologie.
+R_LDR_TERRAIN,admissibilite,LDR,Développement Rural,terrain >= 14,augmenter_score_symbolique(LDR),1,La filière Développement Rural valorise fortement la compétence terrain.
+R_LGC_MATHEMATIQUES,admissibilite,LGC,Génie Civil,mathematiques >= 15,augmenter_score_symbolique(LGC),1,La filière Génie Civil valorise fortement la compétence mathematiques.
+R_LGC_PHYSIQUE,admissibilite,LGC,Génie Civil,physique >= 14,augmenter_score_symbolique(LGC),1,La filière Génie Civil valorise fortement la compétence physique.
+R_LGI_INFORMATIQUE,admissibilite,LGI,Génie Informatique,informatique >= 15,augmenter_score_symbolique(LGI),1,La filière Génie Informatique valorise fortement la compétence informatique.
+R_LGI_LOGIQUE,admissibilite,LGI,Génie Informatique,logique >= 14,augmenter_score_symbolique(LGI),1,La filière Génie Informatique valorise fortement la compétence logique.
+R_LPSY_EMPATHIE,admissibilite,LPSY,Psychologie,empathie >= 15,augmenter_score_symbolique(LPSY),1,La filière Psychologie valorise fortement la compétence empathie.
+R_LPSY_COMMUNICATION,admissibilite,LPSY,Psychologie,communication >= 13,augmenter_score_symbolique(LPSY),1,La filière Psychologie valorise fortement la compétence communication.
+

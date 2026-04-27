@@ -1,0 +1,90 @@
+code_filiere,filiere,domaine,competence,poids,obligatoire,seuil_minimal,cycle
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,francais,0.9,1,14,Licence
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,communication,0.95,1,15,Licence
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,interet_social,0.85,1,13,Licence
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,empathie,0.75,0,11,Licence
+LPH,Philosophie,Sciences de l'Homme et de la Société,francais,0.85,1,13,Licence
+LPH,Philosophie,Sciences de l'Homme et de la Société,logique,0.95,1,15,Licence
+LPH,Philosophie,Sciences de l'Homme et de la Société,communication,0.7,1,10,Licence
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,informatique,0.9,1,14,Licence
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,logique,0.85,1,13,Licence
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,economie,0.75,1,11,Licence
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,anglais,0.9,1,14,Licence
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,informatique,0.85,1,13,Licence
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,interet_affaires,0.85,1,13,Licence
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,economie,0.85,1,13,Licence
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,leadership,0.8,1,12,Licence
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,interet_affaires,0.9,1,14,Licence
+LMG,Management Général,Sciences Économiques et de Gestion,leadership,0.9,1,14,Licence
+LMG,Management Général,Sciences Économiques et de Gestion,economie,0.8,1,12,Licence
+LMG,Management Général,Sciences Économiques et de Gestion,interet_affaires,0.85,1,13,Licence
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,leadership,0.8,1,12,Licence
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,economie,0.7,1,10,Licence
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,terrain,0.75,1,11,Licence
+LDR,Développement Rural,Sciences Agronomiques et Environnement,biologie,0.8,1,12,Licence
+LDR,Développement Rural,Sciences Agronomiques et Environnement,terrain,0.9,1,14,Licence
+LDR,Développement Rural,Sciences Agronomiques et Environnement,interet_environnement,0.95,1,15,Licence
+LPSY,Psychologie,Sciences Psychologiques de l'Education,empathie,0.95,1,15,Licence
+LPSY,Psychologie,Sciences Psychologiques de l'Education,communication,0.85,1,13,Licence
+LPSY,Psychologie,Sciences Psychologiques de l'Education,interet_social,0.9,1,14,Licence
+LARC,Architecture,Sciences et Technologie,dessin,0.95,1,15,Licence
+LARC,Architecture,Sciences et Technologie,mathematiques,0.7,1,10,Licence
+LARC,Architecture,Sciences et Technologie,interet_technologie,0.8,1,12,Licence
+LGC,Génie Civil,Sciences et Technologie,mathematiques,0.95,1,15,Licence
+LGC,Génie Civil,Sciences et Technologie,physique,0.9,1,14,Licence
+LGC,Génie Civil,Sciences et Technologie,logique,0.8,1,12,Licence
+LGE,Génie Électrique,Sciences et Technologie,mathematiques,0.9,1,14,Licence
+LGE,Génie Électrique,Sciences et Technologie,physique,0.95,1,15,Licence
+LGE,Génie Électrique,Sciences et Technologie,informatique,0.65,1,9,Licence
+LGI,Génie Informatique,Sciences et Technologie,informatique,0.95,1,15,Licence
+LGI,Génie Informatique,Sciences et Technologie,logique,0.9,1,14,Licence
+LGI,Génie Informatique,Sciences et Technologie,mathematiques,0.8,1,12,Licence
+LGM,Génie Mécanique,Sciences et Technologie,mathematiques,0.85,1,13,Licence
+LGM,Génie Mécanique,Sciences et Technologie,physique,0.85,1,13,Licence
+LGM,Génie Mécanique,Sciences et Technologie,logique,0.75,1,11,Licence
+MIMSI,Master en Informatique Appliquée à la Gestion - Spécialité IMSI,Sciences Économiques et de Gestion,informatique,0.9,1,14,Master
+MIMSI,Master en Informatique Appliquée à la Gestion - Spécialité IMSI,Sciences Économiques et de Gestion,logique,0.85,1,13,Master
+MIMSI,Master en Informatique Appliquée à la Gestion - Spécialité IMSI,Sciences Économiques et de Gestion,gestion_projet,0.85,1,13,Master
+MSRI,Master en Informatique de Gestion - Spécialité SRI,Sciences Économiques et de Gestion,informatique,0.9,1,14,Master
+MSRI,Master en Informatique de Gestion - Spécialité SRI,Sciences Économiques et de Gestion,logique,0.85,1,13,Master
+MSRI,Master en Informatique de Gestion - Spécialité SRI,Sciences Économiques et de Gestion,reseau,0.85,1,13,Master
+MEIGP,"Master en Entrepreneuriat, Innovation et Gestion des PME",Sciences Économiques et de Gestion,entrepreneuriat,0.9,1,14,Master
+MEIGP,"Master en Entrepreneuriat, Innovation et Gestion des PME",Sciences Économiques et de Gestion,leadership,0.85,1,13,Master
+MEIGP,"Master en Entrepreneuriat, Innovation et Gestion des PME",Sciences Économiques et de Gestion,interet_affaires,0.9,1,14,Master
+MGRH,Master en Gestion des Ressources Humaines,Sciences Économiques et de Gestion,leadership,0.85,1,13,Master
+MGRH,Master en Gestion des Ressources Humaines,Sciences Économiques et de Gestion,empathie,0.9,1,14,Master
+MGRH,Master en Gestion des Ressources Humaines,Sciences Économiques et de Gestion,communication,0.85,1,13,Master
+MCED,"Maîtrise en Communication, Education et Développement",Sciences de l'Homme et de la Société,communication,0.9,1,14,Master
+MCED,"Maîtrise en Communication, Education et Développement",Sciences de l'Homme et de la Société,education,0.85,1,13,Master
+MCED,"Maîtrise en Communication, Education et Développement",Sciences de l'Homme et de la Société,interet_social,0.85,1,13,Master
+MIC,Maîtrise en Information Technique et Documentaire,Sciences de l'Homme et de la Société,informatique,0.8,1,12,Master
+MIC,Maîtrise en Information Technique et Documentaire,Sciences de l'Homme et de la Société,communication,0.85,1,13,Master
+MPICP,"Maîtrise en Presse, Information et Communication Publique",Sciences de l'Homme et de la Société,communication,0.9,1,14,Master
+MPICP,"Maîtrise en Presse, Information et Communication Publique",Sciences de l'Homme et de la Société,journalisme,0.85,1,13,Master
+MGAP,Maîtrise en Gestion et Administration des Projets,Sciences Agronomiques et Environnement,gestion_projet,0.9,1,14,Master
+MGAP,Maîtrise en Gestion et Administration des Projets,Sciences Agronomiques et Environnement,leadership,0.85,1,13,Master
+MGEA,Maîtrise en Gestion des Entreprises Agricoles,Sciences Agronomiques et Environnement,entreprise_agricole,0.85,1,13,Master
+MGEA,Maîtrise en Gestion des Entreprises Agricoles,Sciences Agronomiques et Environnement,economie,0.8,1,12,Master
+MEDD,Maîtrise en Environnement et Développement Durable,Sciences Agronomiques et Environnement,environnement,0.9,1,14,Master
+MEDD,Maîtrise en Environnement et Développement Durable,Sciences Agronomiques et Environnement,interet_environnement,0.95,1,15,Master
+MAP,Maîtrise en Architecture et Paysage,Sciences et Technologie,architecture,0.9,1,14,Master
+MAP,Maîtrise en Architecture et Paysage,Sciences et Technologie,dessin,0.85,1,13,Master
+MASOA,Maîtrise en Structure et Ouvrage d'Art,Sciences et Technologie,genie_civil,0.9,1,14,Master
+MASOA,Maîtrise en Structure et Ouvrage d'Art,Sciences et Technologie,mathematiques,0.85,1,13,Master
+MEE,Maîtrise en Electronique et Energetique,Sciences et Technologie,electronique,0.9,1,14,Master
+MEE,Maîtrise en Electronique et Energetique,Sciences et Technologie,physique,0.85,1,13,Master
+MSIIL,Maîtrise en Systèmes Intelligents & Ingénierie Logicielle,Sciences et Technologie,programmation,0.95,1,15,Master
+MSIIL,Maîtrise en Systèmes Intelligents & Ingénierie Logicielle,Sciences et Technologie,intelligence_artificielle,0.9,1,14,Master
+MPC,Maîtrise en Psychologie Clinique,Sciences Psychologiques de l'Education,psychologie_clinique,0.9,1,14,Master
+MPC,Maîtrise en Psychologie Clinique,Sciences Psychologiques de l'Education,empathie,0.85,1,13,Master
+DBA,Doctorat en Business Administration,Sciences Économiques et de Gestion,recherche,0.9,1,14,Doctorat
+DBA,Doctorat en Business Administration,Sciences Économiques et de Gestion,leadership,0.85,1,13,Doctorat
+DBA,Doctorat en Business Administration,Sciences Économiques et de Gestion,innovation,0.85,1,13,Doctorat
+PhD_ESG,Doctorat en Sciences Économiques et de Gestion,Sciences Économiques et de Gestion,recherche,0.9,1,14,Doctorat
+PhD_ESG,Doctorat en Sciences Économiques et de Gestion,Sciences Économiques et de Gestion,econometrie,0.85,1,13,Doctorat
+PhD_SAE,Doctorat en Sciences Agronomiques et Environnement,Sciences Agronomiques et Environnement,recherche,0.9,1,14,Doctorat
+PhD_SAE,Doctorat en Sciences Agronomiques et Environnement,Sciences Agronomiques et Environnement,environnement,0.85,1,13,Doctorat
+PhD_ST,Doctorat en Sciences et Technologie,Sciences et Technologie,recherche,0.9,1,14,Doctorat
+PhD_ST,Doctorat en Sciences et Technologie,Sciences et Technologie,innovation,0.85,1,13,Doctorat
+PhD_SPE,Doctorat en Sciences Psychologiques de l'Education,Sciences Psychologiques de l'Education,recherche,0.9,1,14,Doctorat
+PhD_SPE,Doctorat en Sciences Psychologiques de l'Education,Sciences Psychologiques de l'Education,psychologie,0.85,1,13,Doctorat
