@@ -11,6 +11,8 @@
     <style>
         body { font-family: 'Inter', sans-serif; background: #f6f8fb; color: #172033; }
         .topbar { background: #ffffff; border-bottom: 1px solid #e5e7eb; }
+        .brand-logo { width: 42px; height: 42px; object-fit: contain; }
+        .hero-logo { width: 118px; height: 118px; object-fit: contain; margin-bottom: 1.25rem; }
         .hero { min-height: 72vh; display: flex; align-items: center; background: linear-gradient(135deg, #eef6ff, #ffffff 48%, #f5fbf2); }
         .hero h1 { font-size: clamp(2.3rem, 5vw, 4.8rem); font-weight: 800; line-height: 1; letter-spacing: 0; }
         .hero p { font-size: 1.1rem; color: #526071; max-width: 760px; }
@@ -25,7 +27,7 @@
 <body>
     <nav class="topbar py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand fw-bold text-decoration-none text-dark" href="/"><i class="fas fa-graduation-cap text-primary me-2"></i>SERAP-UAC</a>
+            <a class="navbar-brand fw-bold text-decoration-none text-dark d-flex align-items-center gap-2" href="/"><img src="/static/LOGO-UAC.png" alt="Logo UAC" class="brand-logo">SERAP-UAC</a>
             <div class="d-flex gap-2">
                 <a href="/connexion" class="btn btn-outline-primary"><i class="fas fa-right-to-bracket me-2"></i>Connexion</a>
                 <a href="/inscription" class="btn btn-primary"><i class="fas fa-user-plus me-2"></i>Inscription</a>
@@ -36,6 +38,7 @@
     <header class="hero">
         <div class="container">
             <div class="col-lg-10">
+                <img src="/static/LOGO-UAC.png" alt="Logo de l'Université de l'Assomption au Congo" class="hero-logo">
                 <span class="badge text-bg-primary mb-3">Système de recommandation académique</span>
                 <h1>Choisir une filière avec des recommandations personnalisées.</h1>
                 <p class="mt-4">SERAP-UAC analyse les compétences, les centres d’intérêt et les exigences des programmes pour proposer les filières les plus adaptées au profil de l’étudiant.</p>
