@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import secrets
 import sqlite3
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -35,6 +37,22 @@ CREATE TABLE IF NOT EXISTS recommandation_item (
 );
 
 CREATE INDEX IF NOT EXISTS idx_item_session ON recommandation_item(session_id);
+
+CREATE TABLE IF NOT EXISTS utilisateur (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nom TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  mot_de_passe_hash TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'etudiant',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS session_utilisateur (
+  token TEXT PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  FOREIGN KEY (user_id) REFERENCES utilisateur(id)
+);
 """
 
 
@@ -50,6 +68,87 @@ def _connect(db_path: Path = CHEMIN_BD) -> sqlite3.Connection:
 def init_db(db_path: Path = CHEMIN_BD) -> None:
     with _connect(db_path) as conn:
         conn.executescript(SCHEMA_SQL)
+        _creer_admin_defaut(conn)
+
+
+def _hash_mot_de_passe(mot_de_passe: str, salt: Optional[str] = None) -> str:
+    salt = salt or secrets.token_hex(16)
+    digest = hashlib.pbkdf2_hmac("sha256", mot_de_passe.encode("utf-8"), salt.encode("utf-8"), 120_000)
+    return f"{salt}${digest.hex()}"
+
+
+def _verifier_mot_de_passe(mot_de_passe: str, valeur_hash: str) -> bool:
+    try:
+        salt, _ = valeur_hash.split("$", 1)
+    except ValueError:
+        return False
+    return secrets.compare_digest(_hash_mot_de_passe(mot_de_passe, salt), valeur_hash)
+
+
+def _creer_admin_defaut(conn: sqlite3.Connection) -> None:
+    existe = conn.execute("SELECT id FROM utilisateur WHERE role = 'admin' LIMIT 1").fetchone()
+    if existe:
+        return
+    conn.execute(
+        "INSERT INTO utilisateur (nom, email, mot_de_passe_hash, role) VALUES (?, ?, ?, ?)",
+        ("Administrateur", "admin@serap-uac.local", _hash_mot_de_passe("admin123"), "admin"),
+    )
+
+
+def creer_utilisateur(nom: str, email: str, mot_de_passe: str, role: str = "etudiant", db_path: Path = CHEMIN_BD) -> Tuple[bool, str]:
+    role = role if role in {"etudiant", "admin"} else "etudiant"
+    with _connect(db_path) as conn:
+        existe = conn.execute("SELECT id FROM utilisateur WHERE lower(email) = lower(?)", (email,)).fetchone()
+        if existe:
+            return False, "Un compte existe deja avec cette adresse email."
+        conn.execute(
+            "INSERT INTO utilisateur (nom, email, mot_de_passe_hash, role) VALUES (?, ?, ?, ?)",
+            (nom.strip(), email.strip().lower(), _hash_mot_de_passe(mot_de_passe), role),
+        )
+    return True, "Compte cree avec succes."
+
+
+def authentifier(email: str, mot_de_passe: str, db_path: Path = CHEMIN_BD) -> Optional[Dict[str, Any]]:
+    with _connect(db_path) as conn:
+        ligne = conn.execute(
+            "SELECT id, nom, email, mot_de_passe_hash, role FROM utilisateur WHERE lower(email) = lower(?)",
+            (email.strip(),),
+        ).fetchone()
+        if not ligne or not _verifier_mot_de_passe(mot_de_passe, str(ligne["mot_de_passe_hash"])):
+            return None
+        return {"id": int(ligne["id"]), "nom": str(ligne["nom"]), "email": str(ligne["email"]), "role": str(ligne["role"])}
+
+
+def creer_session(user_id: int, db_path: Path = CHEMIN_BD) -> str:
+    token = secrets.token_urlsafe(32)
+    with _connect(db_path) as conn:
+        conn.execute("INSERT INTO session_utilisateur (token, user_id) VALUES (?, ?)", (token, int(user_id)))
+    return token
+
+
+def utilisateur_par_token(token: str, db_path: Path = CHEMIN_BD) -> Optional[Dict[str, Any]]:
+    if not token:
+        return None
+    with _connect(db_path) as conn:
+        ligne = conn.execute(
+            """
+            SELECT u.id, u.nom, u.email, u.role
+            FROM session_utilisateur s
+            JOIN utilisateur u ON u.id = s.user_id
+            WHERE s.token = ?
+            """,
+            (token,),
+        ).fetchone()
+        if not ligne:
+            return None
+        return {"id": int(ligne["id"]), "nom": str(ligne["nom"]), "email": str(ligne["email"]), "role": str(ligne["role"])}
+
+
+def supprimer_session(token: str, db_path: Path = CHEMIN_BD) -> None:
+    if not token:
+        return
+    with _connect(db_path) as conn:
+        conn.execute("DELETE FROM session_utilisateur WHERE token = ?", (token,))
 
 
 def enregistrer_recommandation(

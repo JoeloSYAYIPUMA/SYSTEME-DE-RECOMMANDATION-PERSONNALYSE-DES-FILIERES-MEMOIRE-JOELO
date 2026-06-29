@@ -1,16 +1,27 @@
 from __future__ import annotations  # Active les annotations différées.
 
+import csv
 import json
 from datetime import datetime, timedelta
 from pathlib import Path  # Importe Path pour les chemins.
 from typing import Dict, Optional  # Importe les types utiles.
 
-from fastapi import FastAPI, Form, Request  # Importe les outils FastAPI nécessaires.
-from fastapi.responses import HTMLResponse, JSONResponse  # Importe les types de réponses HTTP.
+from fastapi import FastAPI, Form, HTTPException, Request  # Importe les outils FastAPI nécessaires.
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response  # Importe les types de réponses HTTP.
 from fastapi.staticfiles import StaticFiles  # Importe le montage des fichiers statiques.
 from fastapi.templating import Jinja2Templates  # Importe le moteur de templates Jinja2.
 
-from application.db import enregistrer_recommandation, init_db, lister_items, lister_sessions  # Importe la persistance SQLite.
+from application.db import (
+    authentifier,
+    creer_session,
+    creer_utilisateur,
+    enregistrer_recommandation,
+    init_db,
+    lister_items,
+    lister_sessions,
+    supprimer_session,
+    utilisateur_par_token,
+)  # Importe la persistance SQLite.
 from application.moteur import COLONNES_COMPETENCES, MoteurSERAP  # Importe les constantes et le moteur métier.
 
 BASE_DIR = Path(__file__).resolve().parents[1]  # Définit le dossier racine du projet.
@@ -21,6 +32,7 @@ app = FastAPI(title="SERAP-UAC", version="1.0.0")  # Crée l’application FastA
 app.mount("/static", StaticFiles(directory=str(DOSSIER_STATIC)), name="static")  # Monte le dossier static.
 templates = Jinja2Templates(directory=str(DOSSIER_TEMPLATES))  # Initialise le moteur de templates.
 moteur = MoteurSERAP()  # Initialise le moteur de recommandation hybride.
+SESSION_COOKIE = "serap_session"
 
 
 @app.on_event("startup")  # Initialise les ressources au démarrage du serveur.
@@ -63,21 +75,119 @@ def convertir_valeur(valeur: Optional[str]) -> Optional[float]:
     return float(valeur)
 
 
+def utilisateur_connecte(request: Request) -> Optional[Dict[str, str]]:
+    return utilisateur_par_token(request.cookies.get(SESSION_COOKIE, ""))
+
+
+def rediriger_selon_role(user: Dict[str, str]) -> RedirectResponse:
+    if user.get("role") == "admin":
+        return RedirectResponse(url="/dashboard", status_code=303)
+    return RedirectResponse(url="/evaluation", status_code=303)
+
+
+def exiger_connexion(request: Request) -> Optional[RedirectResponse]:
+    if utilisateur_connecte(request):
+        return None
+    return RedirectResponse(url="/connexion", status_code=303)
+
+
+def exiger_admin(request: Request) -> Optional[RedirectResponse]:
+    user = utilisateur_connecte(request)
+    if not user:
+        return RedirectResponse(url="/connexion", status_code=303)
+    if user.get("role") != "admin":
+        return RedirectResponse(url="/evaluation", status_code=303)
+    return None
+
+
+def lister_filieres_accueil() -> list[Dict[str, str]]:
+    chemin = BASE_DIR / "donnees" / "exigences_filieres.csv"
+    filieres: Dict[str, Dict[str, str]] = {}
+    with open(chemin, "r", encoding="utf-8") as fichier:
+        for ligne in csv.DictReader(fichier):
+            code = str(ligne.get("code_filiere", "")).strip()
+            if code and code not in filieres:
+                filieres[code] = {
+                    "code": code,
+                    "filiere": str(ligne.get("filiere", "")).strip(),
+                    "domaine": str(ligne.get("domaine", "")).strip(),
+                }
+    return list(filieres.values())
+
+
 # ============================================
-# PAGE D'ACCUEIL = TABLEAU DE BORD
+# ACCUEIL ET AUTHENTIFICATION
 # ============================================
 
 @app.get("/", response_class=HTMLResponse)
-def page_dashboard(request: Request) -> HTMLResponse:
-    """Page d'accueil - Tableau de bord."""
-    return templates.TemplateResponse(request, "dashboard.html", {"request": request})
+def page_accueil(request: Request) -> Response:
+    user = utilisateur_connecte(request)
+    if user:
+        return rediriger_selon_role(user)
+    return templates.TemplateResponse(request, "accueil.html", {"request": request, "filieres": lister_filieres_accueil()})
+
+
+@app.get("/connexion", response_class=HTMLResponse)
+def page_connexion(request: Request) -> Response:
+    user = utilisateur_connecte(request)
+    if user:
+        return rediriger_selon_role(user)
+    return templates.TemplateResponse(request, "connexion.html", {"request": request, "erreur": ""})
+
+
+@app.post("/connexion", response_class=HTMLResponse)
+def connecter(request: Request, email: str = Form(...), mot_de_passe: str = Form(...)) -> Response:
+    user = authentifier(email, mot_de_passe)
+    if not user:
+        return templates.TemplateResponse(request, "connexion.html", {"request": request, "erreur": "Email ou mot de passe incorrect."})
+    token = creer_session(int(user["id"]))
+    response = rediriger_selon_role(user)
+    response.set_cookie(SESSION_COOKIE, token, httponly=True, samesite="lax", max_age=60 * 60 * 24 * 7)
+    return response
+
+
+@app.get("/inscription", response_class=HTMLResponse)
+def page_inscription(request: Request) -> Response:
+    user = utilisateur_connecte(request)
+    if user:
+        return rediriger_selon_role(user)
+    return templates.TemplateResponse(request, "inscription.html", {"request": request, "erreur": ""})
+
+
+@app.post("/inscription", response_class=HTMLResponse)
+def inscrire(request: Request, nom: str = Form(...), email: str = Form(...), mot_de_passe: str = Form(...)) -> Response:
+    if len(mot_de_passe) < 6:
+        return templates.TemplateResponse(request, "inscription.html", {"request": request, "erreur": "Le mot de passe doit contenir au moins 6 caracteres."})
+    ok, message = creer_utilisateur(nom, email, mot_de_passe, role="etudiant")
+    if not ok:
+        return templates.TemplateResponse(request, "inscription.html", {"request": request, "erreur": message})
+    user = authentifier(email, mot_de_passe)
+    if not user:
+        return RedirectResponse(url="/connexion", status_code=303)
+    token = creer_session(int(user["id"]))
+    response = RedirectResponse(url="/evaluation", status_code=303)
+    response.set_cookie(SESSION_COOKIE, token, httponly=True, samesite="lax", max_age=60 * 60 * 24 * 7)
+    return response
+
+
+@app.get("/deconnexion")
+def deconnecter(request: Request) -> RedirectResponse:
+    supprimer_session(request.cookies.get(SESSION_COOKIE, ""))
+    response = RedirectResponse(url="/", status_code=303)
+    response.delete_cookie(SESSION_COOKIE)
+    return response
 
 
 @app.get("/evaluation", response_class=HTMLResponse)
-def page_evaluation(request: Request) -> HTMLResponse:
+def page_evaluation(request: Request) -> Response:
     """Formulaire d'évaluation des compétences."""
+    redirection = exiger_connexion(request)
+    if redirection:
+        return redirection
+    user = utilisateur_connecte(request)
     contexte = {
         "request": request,
+        "user": user,
         "groupes": GROUPES,
         "libelles": LIBELLES,
         "resume_systeme": moteur.recommander({}, top_k=1)["resume_systeme"],
@@ -86,11 +196,15 @@ def page_evaluation(request: Request) -> HTMLResponse:
 
 
 @app.get("/historique", response_class=HTMLResponse)
-def page_historique(request: Request) -> HTMLResponse:
+def page_historique(request: Request) -> Response:
+    redirection = exiger_admin(request)
+    if redirection:
+        return redirection
     sessions = lister_sessions(limit=50)
     items_par_session = {s["id"]: lister_items(s["id"]) for s in sessions}
     contexte = {
         "request": request,
+        "user": utilisateur_connecte(request),
         "sessions": sessions,
         "items_par_session": items_par_session,
         "libelles": LIBELLES,
@@ -99,8 +213,11 @@ def page_historique(request: Request) -> HTMLResponse:
 
 
 @app.get("/dashboard", response_class=HTMLResponse)
-def page_dashboard_old(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse(request, "dashboard.html", {"request": request})
+def page_dashboard(request: Request) -> Response:
+    redirection = exiger_admin(request)
+    if redirection:
+        return redirection
+    return templates.TemplateResponse(request, "dashboard.html", {"request": request, "user": utilisateur_connecte(request)})
 
 
 # ============================================
@@ -108,8 +225,11 @@ def page_dashboard_old(request: Request) -> HTMLResponse:
 # ============================================
 
 @app.get("/api/dashboard-stats", response_class=JSONResponse)
-def dashboard_stats() -> JSONResponse:
+def dashboard_stats(request: Request) -> JSONResponse:
     """Retourne les statistiques pour le tableau de bord avec données de démonstration."""
+    user = utilisateur_connecte(request)
+    if not user or user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Acces reserve a l'administration.")
     
     # ============================================
     # DONNÉES DE DÉMONSTRATION (pour que le dashboard s'affiche)
@@ -372,7 +492,10 @@ def recommander_html(
     interet_affaires: Optional[str] = Form(None),
     interet_environnement: Optional[str] = Form(None),
     interet_technologie: Optional[str] = Form(None),
-) -> HTMLResponse:
+) -> Response:
+    redirection = exiger_connexion(request)
+    if redirection:
+        return redirection
     brut = locals().copy()
     profil: Dict[str, Optional[float]] = {}
     for champ in COLONNES_COMPETENCES:
@@ -382,6 +505,7 @@ def recommander_html(
     enregistrer_recommandation(profil, resultat, top_k=top_k)
     contexte = {
         "request": request,
+        "user": utilisateur_connecte(request),
         "profil": profil,
         "resultat": resultat,
         "libelles": LIBELLES,
@@ -391,6 +515,8 @@ def recommander_html(
 
 @app.post("/api/recommander", response_class=JSONResponse)
 async def recommander_api(request: Request) -> JSONResponse:
+    if not utilisateur_connecte(request):
+        raise HTTPException(status_code=401, detail="Connexion requise.")
     data = await request.json()
     profil = {champ: (None if data.get(champ) in (None, "") else float(data.get(champ))) for champ in COLONNES_COMPETENCES}
     top_k = int(data.get("top_k", 3))

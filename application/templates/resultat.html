@@ -256,9 +256,14 @@
             <span>SERAP-UAC</span>
         </div>
         <nav class="sidebar-nav">
-            <a href="/" class="sidebar-link"><i class="fas fa-chart-line"></i><span>Tableau de bord</span></a>
+            {% if user and user.role == "admin" %}
+            <a href="/dashboard" class="sidebar-link"><i class="fas fa-chart-line"></i><span>Tableau de bord</span></a>
+            {% endif %}
             <a href="/evaluation" class="sidebar-link"><i class="fas fa-pen-ruler"></i><span>Évaluation</span></a>
+            {% if user and user.role == "admin" %}
             <a href="/historique" class="sidebar-link"><i class="fas fa-clock-rotate-left"></i><span>Historique</span></a>
+            {% endif %}
+            <a href="/deconnexion" class="sidebar-link"><i class="fas fa-right-from-bracket"></i><span>Déconnexion</span></a>
         </nav>
         <div class="sidebar-footer">
             <div class="small text-muted text-center"><i class="fas fa-microchip me-1"></i>SERAP v1.0</div>
