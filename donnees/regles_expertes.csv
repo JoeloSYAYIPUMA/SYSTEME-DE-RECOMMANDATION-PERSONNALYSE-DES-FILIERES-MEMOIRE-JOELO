@@ -1,0 +1,57 @@
+code_regle,type_regle,code_filiere,filiere,si,alors,priorite,explication
+R_LARC_DESSIN,admissibilité,LARC,Architecture,dessin >= 15,augmenter_score_symbolique(LARC),1,La filière Architecture valorise fortement la compétence dessin.
+R_LARC_MATHEMATIQUES,admissibilité,LARC,Architecture,mathematiques >= 10,augmenter_score_symbolique(LARC),1,La filière Architecture valorise fortement la compétence mathematiques.
+R_LARC_INTERET_TECHNOLOGIE,admissibilité,LARC,Architecture,interet_technologie >= 12,augmenter_score_symbolique(LARC),1,La filière Architecture valorise fortement la compétence interet_technologie.
+R_LARC_DESSIN_FAIBLE,exclusion_relative,LARC,Architecture,dessin < 11,réduire_score_symbolique(LARC),2,Un niveau trop faible en dessin fragilise l'adéquation avec Architecture.
+R_LCA_FRANCAIS,admissibilité,LCA,Communication Appliquée,francais >= 14,augmenter_score_symbolique(LCA),1,La filière Communication Appliquée valorise fortement la compétence francais.
+R_LCA_COMMUNICATION,admissibilité,LCA,Communication Appliquée,communication >= 15,augmenter_score_symbolique(LCA),1,La filière Communication Appliquée valorise fortement la compétence communication.
+R_LCA_INTERET_SOCIAL,admissibilité,LCA,Communication Appliquée,interet_social >= 13,augmenter_score_symbolique(LCA),1,La filière Communication Appliquée valorise fortement la compétence interet_social.
+R_LCA_FRANCAIS_FAIBLE,exclusion_relative,LCA,Communication Appliquée,francais < 10,réduire_score_symbolique(LCA),2,Un niveau trop faible en francais fragilise l'adéquation avec Communication Appliquée.
+R_LDR_BIOLOGIE,admissibilité,LDR,Développement Rural,biologie >= 12,augmenter_score_symbolique(LDR),1,La filière Développement Rural valorise fortement la compétence biologie.
+R_LDR_TERRAIN,admissibilité,LDR,Développement Rural,terrain >= 14,augmenter_score_symbolique(LDR),1,La filière Développement Rural valorise fortement la compétence terrain.
+R_LDR_INTERET_ENVIRONNEMENT,admissibilité,LDR,Développement Rural,interet_environnement >= 15,augmenter_score_symbolique(LDR),1,La filière Développement Rural valorise fortement la compétence interet_environnement.
+R_LDR_BIOLOGIE_FAIBLE,exclusion_relative,LDR,Développement Rural,biologie < 8,réduire_score_symbolique(LDR),2,Un niveau trop faible en biologie fragilise l'adéquation avec Développement Rural.
+R_LGAP_LEADERSHIP,admissibilité,LGAP,Gestion et Administration des Projets,leadership >= 12,augmenter_score_symbolique(LGAP),1,La filière Gestion et Administration des Projets valorise fortement la compétence leadership.
+R_LGAP_ECONOMIE,admissibilité,LGAP,Gestion et Administration des Projets,economie >= 10,augmenter_score_symbolique(LGAP),1,La filière Gestion et Administration des Projets valorise fortement la compétence economie.
+R_LGAP_TERRAIN,admissibilité,LGAP,Gestion et Administration des Projets,terrain >= 11,augmenter_score_symbolique(LGAP),1,La filière Gestion et Administration des Projets valorise fortement la compétence terrain.
+R_LGAP_LEADERSHIP_FAIBLE,exclusion_relative,LGAP,Gestion et Administration des Projets,leadership < 8,réduire_score_symbolique(LGAP),2,Un niveau trop faible en leadership fragilise l'adéquation avec Gestion et Administration des Projets.
+R_LGC_MATHEMATIQUES,admissibilité,LGC,Génie Civil,mathematiques >= 15,augmenter_score_symbolique(LGC),1,La filière Génie Civil valorise fortement la compétence mathematiques.
+R_LGC_PHYSIQUE,admissibilité,LGC,Génie Civil,physique >= 14,augmenter_score_symbolique(LGC),1,La filière Génie Civil valorise fortement la compétence physique.
+R_LGC_LOGIQUE,admissibilité,LGC,Génie Civil,logique >= 12,augmenter_score_symbolique(LGC),1,La filière Génie Civil valorise fortement la compétence logique.
+R_LGC_MATHEMATIQUES_FAIBLE,exclusion_relative,LGC,Génie Civil,mathematiques < 11,réduire_score_symbolique(LGC),2,Un niveau trop faible en mathematiques fragilise l'adéquation avec Génie Civil.
+R_LGE_MATHEMATIQUES,admissibilité,LGE,Génie Électrique,mathematiques >= 14,augmenter_score_symbolique(LGE),1,La filière Génie Électrique valorise fortement la compétence mathematiques.
+R_LGE_PHYSIQUE,admissibilité,LGE,Génie Électrique,physique >= 15,augmenter_score_symbolique(LGE),1,La filière Génie Électrique valorise fortement la compétence physique.
+R_LGE_INFORMATIQUE,admissibilité,LGE,Génie Électrique,informatique >= 9,augmenter_score_symbolique(LGE),1,La filière Génie Électrique valorise fortement la compétence informatique.
+R_LGE_MATHEMATIQUES_FAIBLE,exclusion_relative,LGE,Génie Électrique,mathematiques < 10,réduire_score_symbolique(LGE),2,Un niveau trop faible en mathematiques fragilise l'adéquation avec Génie Électrique.
+R_LGEOT_ECONOMIE,admissibilité,LGEOT,Gestion des Entreprises et Organisation du Travail,economie >= 13,augmenter_score_symbolique(LGEOT),1,La filière Gestion des Entreprises et Organisation du Travail valorise fortement la compétence economie.
+R_LGEOT_LEADERSHIP,admissibilité,LGEOT,Gestion des Entreprises et Organisation du Travail,leadership >= 12,augmenter_score_symbolique(LGEOT),1,La filière Gestion des Entreprises et Organisation du Travail valorise fortement la compétence leadership.
+R_LGEOT_INTERET_AFFAIRES,admissibilité,LGEOT,Gestion des Entreprises et Organisation du Travail,interet_affaires >= 14,augmenter_score_symbolique(LGEOT),1,La filière Gestion des Entreprises et Organisation du Travail valorise fortement la compétence interet_affaires.
+R_LGEOT_ECONOMIE_FAIBLE,exclusion_relative,LGEOT,Gestion des Entreprises et Organisation du Travail,economie < 9,réduire_score_symbolique(LGEOT),2,Un niveau trop faible en economie fragilise l'adéquation avec Gestion des Entreprises et Organisation du Travail.
+R_LGI_INFORMATIQUE,admissibilité,LGI,Génie Informatique,informatique >= 15,augmenter_score_symbolique(LGI),1,La filière Génie Informatique valorise fortement la compétence informatique.
+R_LGI_LOGIQUE,admissibilité,LGI,Génie Informatique,logique >= 14,augmenter_score_symbolique(LGI),1,La filière Génie Informatique valorise fortement la compétence logique.
+R_LGI_MATHEMATIQUES,admissibilité,LGI,Génie Informatique,mathematiques >= 12,augmenter_score_symbolique(LGI),1,La filière Génie Informatique valorise fortement la compétence mathematiques.
+R_LGI_INFORMATIQUE_FAIBLE,exclusion_relative,LGI,Génie Informatique,informatique < 11,réduire_score_symbolique(LGI),2,Un niveau trop faible en informatique fragilise l'adéquation avec Génie Informatique.
+R_LGM_MATHEMATIQUES,admissibilité,LGM,Génie Mécanique,mathematiques >= 13,augmenter_score_symbolique(LGM),1,La filière Génie Mécanique valorise fortement la compétence mathematiques.
+R_LGM_PHYSIQUE,admissibilité,LGM,Génie Mécanique,physique >= 13,augmenter_score_symbolique(LGM),1,La filière Génie Mécanique valorise fortement la compétence physique.
+R_LGM_LOGIQUE,admissibilité,LGM,Génie Mécanique,logique >= 11,augmenter_score_symbolique(LGM),1,La filière Génie Mécanique valorise fortement la compétence logique.
+R_LGM_MATHEMATIQUES_FAIBLE,exclusion_relative,LGM,Génie Mécanique,mathematiques < 9,réduire_score_symbolique(LGM),2,Un niveau trop faible en mathematiques fragilise l'adéquation avec Génie Mécanique.
+R_LIAGE_INFORMATIQUE,admissibilité,LIAGE,Informatique Appliquée à la Gestion des Entreprises,informatique >= 14,augmenter_score_symbolique(LIAGE),1,La filière Informatique Appliquée à la Gestion des Entreprises valorise fortement la compétence informatique.
+R_LIAGE_LOGIQUE,admissibilité,LIAGE,Informatique Appliquée à la Gestion des Entreprises,logique >= 13,augmenter_score_symbolique(LIAGE),1,La filière Informatique Appliquée à la Gestion des Entreprises valorise fortement la compétence logique.
+R_LIAGE_ECONOMIE,admissibilité,LIAGE,Informatique Appliquée à la Gestion des Entreprises,economie >= 11,augmenter_score_symbolique(LIAGE),1,La filière Informatique Appliquée à la Gestion des Entreprises valorise fortement la compétence economie.
+R_LIAGE_INFORMATIQUE_FAIBLE,exclusion_relative,LIAGE,Informatique Appliquée à la Gestion des Entreprises,informatique < 10,réduire_score_symbolique(LIAGE),2,Un niveau trop faible en informatique fragilise l'adéquation avec Informatique Appliquée à la Gestion des Entreprises.
+R_LIGAF_ANGLAIS,admissibilité,LIGAF,Informatique de Gestion et Anglais des Affaires,anglais >= 14,augmenter_score_symbolique(LIGAF),1,La filière Informatique de Gestion et Anglais des Affaires valorise fortement la compétence anglais.
+R_LIGAF_INFORMATIQUE,admissibilité,LIGAF,Informatique de Gestion et Anglais des Affaires,informatique >= 13,augmenter_score_symbolique(LIGAF),1,La filière Informatique de Gestion et Anglais des Affaires valorise fortement la compétence informatique.
+R_LIGAF_INTERET_AFFAIRES,admissibilité,LIGAF,Informatique de Gestion et Anglais des Affaires,interet_affaires >= 13,augmenter_score_symbolique(LIGAF),1,La filière Informatique de Gestion et Anglais des Affaires valorise fortement la compétence interet_affaires.
+R_LIGAF_ANGLAIS_FAIBLE,exclusion_relative,LIGAF,Informatique de Gestion et Anglais des Affaires,anglais < 10,réduire_score_symbolique(LIGAF),2,Un niveau trop faible en anglais fragilise l'adéquation avec Informatique de Gestion et Anglais des Affaires.
+R_LMG_LEADERSHIP,admissibilité,LMG,Management Général,leadership >= 14,augmenter_score_symbolique(LMG),1,La filière Management Général valorise fortement la compétence leadership.
+R_LMG_ECONOMIE,admissibilité,LMG,Management Général,economie >= 12,augmenter_score_symbolique(LMG),1,La filière Management Général valorise fortement la compétence economie.
+R_LMG_INTERET_AFFAIRES,admissibilité,LMG,Management Général,interet_affaires >= 13,augmenter_score_symbolique(LMG),1,La filière Management Général valorise fortement la compétence interet_affaires.
+R_LMG_LEADERSHIP_FAIBLE,exclusion_relative,LMG,Management Général,leadership < 10,réduire_score_symbolique(LMG),2,Un niveau trop faible en leadership fragilise l'adéquation avec Management Général.
+R_LPH_FRANCAIS,admissibilité,LPH,Philosophie,francais >= 13,augmenter_score_symbolique(LPH),1,La filière Philosophie valorise fortement la compétence francais.
+R_LPH_LOGIQUE,admissibilité,LPH,Philosophie,logique >= 15,augmenter_score_symbolique(LPH),1,La filière Philosophie valorise fortement la compétence logique.
+R_LPH_COMMUNICATION,admissibilité,LPH,Philosophie,communication >= 10,augmenter_score_symbolique(LPH),1,La filière Philosophie valorise fortement la compétence communication.
+R_LPH_FRANCAIS_FAIBLE,exclusion_relative,LPH,Philosophie,francais < 9,réduire_score_symbolique(LPH),2,Un niveau trop faible en francais fragilise l'adéquation avec Philosophie.
+R_LPSY_EMPATHIE,admissibilité,LPSY,Psychologie,empathie >= 15,augmenter_score_symbolique(LPSY),1,La filière Psychologie valorise fortement la compétence empathie.
+R_LPSY_COMMUNICATION,admissibilité,LPSY,Psychologie,communication >= 13,augmenter_score_symbolique(LPSY),1,La filière Psychologie valorise fortement la compétence communication.
+R_LPSY_INTERET_SOCIAL,admissibilité,LPSY,Psychologie,interet_social >= 14,augmenter_score_symbolique(LPSY),1,La filière Psychologie valorise fortement la compétence interet_social.
+R_LPSY_EMPATHIE_FAIBLE,exclusion_relative,LPSY,Psychologie,empathie < 11,réduire_score_symbolique(LPSY),2,Un niveau trop faible en empathie fragilise l'adéquation avec Psychologie.

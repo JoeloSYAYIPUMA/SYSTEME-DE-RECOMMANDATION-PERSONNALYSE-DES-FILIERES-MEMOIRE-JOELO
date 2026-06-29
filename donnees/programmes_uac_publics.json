@@ -1,0 +1,118 @@
+{
+  "source": {
+    "site": "https://www.uaconline.edu.cd/",
+    "date_consultation": "2026-04-12",
+    "resume": "Domaines et licences visibles sur le site public UAC utilisés pour structurer la démonstration."
+  },
+  "domaines": [
+    {
+      "nom": "Sciences de l'Homme et de la Société",
+      "source": "https://www.uaconline.edu.cd/domaine?id=SHS",
+      "programmes": [
+        {
+          "code": "LCA",
+          "nom": "Communication Appliquée",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LPH",
+          "nom": "Philosophie",
+          "cycle": "Licence"
+        }
+      ]
+    },
+    {
+      "nom": "Sciences Économiques et de Gestion",
+      "source": "https://www.uaconline.edu.cd/domaine?id=SEG",
+      "programmes": [
+        {
+          "code": "LIAGE",
+          "nom": "Informatique Appliquée à la Gestion des Entreprises",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LIGAF",
+          "nom": "Informatique de Gestion et Anglais des Affaires",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LGEOT",
+          "nom": "Gestion des Entreprises et Organisation du Travail",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LMG",
+          "nom": "Management Général",
+          "cycle": "Licence"
+        }
+      ]
+    },
+    {
+      "nom": "Sciences Agronomiques et Environnement",
+      "source": "https://www.uaconline.edu.cd/domaine?id=SAE",
+      "programmes": [
+        {
+          "code": "LGAP",
+          "nom": "Gestion et Administration des Projets",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LDR",
+          "nom": "Développement Rural",
+          "cycle": "Licence"
+        }
+      ]
+    },
+    {
+      "nom": "Sciences Psychologiques de l'Éducation",
+      "source": "https://www.uaconline.edu.cd/domaine?id=SPE",
+      "programmes": [
+        {
+          "code": "LPSY",
+          "nom": "Psychologie",
+          "cycle": "Licence"
+        }
+      ]
+    },
+    {
+      "nom": "Sciences et Technologie",
+      "source": "https://www.uaconline.edu.cd/domaine?id=ST",
+      "programmes": [
+        {
+          "code": "LARC",
+          "nom": "Architecture",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LGC",
+          "nom": "Génie Civil",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LGE",
+          "nom": "Génie Électrique",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LGI",
+          "nom": "Génie Informatique",
+          "cycle": "Licence"
+        },
+        {
+          "code": "LGM",
+          "nom": "Génie Mécanique",
+          "cycle": "Licence"
+        }
+      ]
+    }
+  ],
+  "calendrier_academique": {
+    "source": "https://uaconline.edu.cd/calendrieracademique",
+    "elements_utiles": [
+      "Début des inscriptions : 08 septembre 2025",
+      "Début des apprentissages : 27 octobre 2025",
+      "Fin des inscriptions : 06 novembre 2025",
+      "Fin des réorientations : 06 novembre 2025"
+    ]
+  }
+}

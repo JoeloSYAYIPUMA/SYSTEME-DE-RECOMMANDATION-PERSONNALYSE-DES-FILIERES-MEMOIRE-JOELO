@@ -1,0 +1,27 @@
+{
+  "classes": [
+    "LARC",
+    "LCA",
+    "LDR",
+    "LGAP",
+    "LGC",
+    "LGE",
+    "LGEOT",
+    "LGI",
+    "LGM",
+    "LIAGE",
+    "LIGAF",
+    "LMG",
+    "LPH",
+    "LPSY"
+  ],
+  "poids_hybrides": {
+    "alpha_regles": 0.4,
+    "beta_graphe": 0.3,
+    "gamma_cnn": 0.3
+  },
+  "nombre_profils_total": 504,
+  "taille_train": 302,
+  "taille_validation": 101,
+  "taille_test": 101
+}

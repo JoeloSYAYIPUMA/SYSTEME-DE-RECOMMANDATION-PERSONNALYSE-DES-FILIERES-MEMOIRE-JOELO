@@ -1,0 +1,6 @@
+modele,accuracy,precision_macro,recall_macro,f1_macro,top3_accuracy,coherence_logique
+regression_logistique,0.7129,0.7467,0.7117,0.7159,,
+random_forest,0.8317,0.8353,0.8304,0.8305,,
+mlp,0.6337,0.6545,0.6365,0.633,,
+cnn_1d,0.7228,0.6937,0.7232,0.7034,0.9307,1.0829
+hybride_serap,0.7525,0.7318,0.7526,0.7379,0.9307,1.0888

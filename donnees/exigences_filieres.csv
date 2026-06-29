@@ -1,0 +1,77 @@
+code_filiere,filiere,domaine,competence,poids,obligatoire,seuil_minimal
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,francais,0.9,1,14
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,communication,0.95,1,15
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,interet_social,0.85,1,13
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,empathie,0.75,0,11
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,informatique,0.55,0,8
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,leadership,0.65,0,9
+LCA,Communication Appliquée,Sciences de l'Homme et de la Société,anglais,0.55,0,8
+LPH,Philosophie,Sciences de l'Homme et de la Société,francais,0.85,1,13
+LPH,Philosophie,Sciences de l'Homme et de la Société,logique,0.95,1,15
+LPH,Philosophie,Sciences de l'Homme et de la Société,communication,0.7,1,10
+LPH,Philosophie,Sciences de l'Homme et de la Société,interet_social,0.65,0,9
+LPH,Philosophie,Sciences de l'Homme et de la Société,anglais,0.5,0,8
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,informatique,0.9,1,14
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,logique,0.85,1,13
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,economie,0.75,1,11
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,interet_affaires,0.8,0,12
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,interet_technologie,0.85,0,13
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,mathematiques,0.7,0,10
+LIAGE,Informatique Appliquée à la Gestion des Entreprises,Sciences Économiques et de Gestion,anglais,0.6,0,8
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,anglais,0.9,1,14
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,informatique,0.85,1,13
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,interet_affaires,0.85,1,13
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,communication,0.7,0,10
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,economie,0.7,0,10
+LIGAF,Informatique de Gestion et Anglais des Affaires,Sciences Économiques et de Gestion,logique,0.75,0,11
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,economie,0.85,1,13
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,leadership,0.8,1,12
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,interet_affaires,0.9,1,14
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,communication,0.65,0,9
+LGEOT,Gestion des Entreprises et Organisation du Travail,Sciences Économiques et de Gestion,logique,0.65,0,9
+LMG,Management Général,Sciences Économiques et de Gestion,leadership,0.9,1,14
+LMG,Management Général,Sciences Économiques et de Gestion,economie,0.8,1,12
+LMG,Management Général,Sciences Économiques et de Gestion,interet_affaires,0.85,1,13
+LMG,Management Général,Sciences Économiques et de Gestion,communication,0.75,0,11
+LMG,Management Général,Sciences Économiques et de Gestion,logique,0.6,0,8
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,leadership,0.8,1,12
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,economie,0.7,1,10
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,terrain,0.75,1,11
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,interet_environnement,0.7,0,10
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,interet_affaires,0.75,0,11
+LGAP,Gestion et Administration des Projets,Sciences Agronomiques et Environnement,communication,0.6,0,8
+LDR,Développement Rural,Sciences Agronomiques et Environnement,biologie,0.8,1,12
+LDR,Développement Rural,Sciences Agronomiques et Environnement,terrain,0.9,1,14
+LDR,Développement Rural,Sciences Agronomiques et Environnement,interet_environnement,0.95,1,15
+LDR,Développement Rural,Sciences Agronomiques et Environnement,communication,0.6,0,8
+LDR,Développement Rural,Sciences Agronomiques et Environnement,leadership,0.6,0,8
+LPSY,Psychologie,Sciences Psychologiques de l'Éducation,empathie,0.95,1,15
+LPSY,Psychologie,Sciences Psychologiques de l'Éducation,communication,0.85,1,13
+LPSY,Psychologie,Sciences Psychologiques de l'Éducation,interet_social,0.9,1,14
+LPSY,Psychologie,Sciences Psychologiques de l'Éducation,francais,0.7,0,10
+LPSY,Psychologie,Sciences Psychologiques de l'Éducation,biologie,0.55,0,8
+LARC,Architecture,Sciences et Technologie,dessin,0.95,1,15
+LARC,Architecture,Sciences et Technologie,mathematiques,0.7,1,10
+LARC,Architecture,Sciences et Technologie,interet_technologie,0.8,1,12
+LARC,Architecture,Sciences et Technologie,logique,0.7,0,10
+LARC,Architecture,Sciences et Technologie,communication,0.55,0,8
+LGC,Génie Civil,Sciences et Technologie,mathematiques,0.95,1,15
+LGC,Génie Civil,Sciences et Technologie,physique,0.9,1,14
+LGC,Génie Civil,Sciences et Technologie,logique,0.8,1,12
+LGC,Génie Civil,Sciences et Technologie,interet_technologie,0.8,0,12
+LGC,Génie Civil,Sciences et Technologie,dessin,0.55,0,8
+LGE,Génie Électrique,Sciences et Technologie,mathematiques,0.9,1,14
+LGE,Génie Électrique,Sciences et Technologie,physique,0.95,1,15
+LGE,Génie Électrique,Sciences et Technologie,informatique,0.65,1,9
+LGE,Génie Électrique,Sciences et Technologie,interet_technologie,0.9,0,14
+LGE,Génie Électrique,Sciences et Technologie,logique,0.75,0,11
+LGI,Génie Informatique,Sciences et Technologie,informatique,0.95,1,15
+LGI,Génie Informatique,Sciences et Technologie,logique,0.9,1,14
+LGI,Génie Informatique,Sciences et Technologie,mathematiques,0.8,1,12
+LGI,Génie Informatique,Sciences et Technologie,interet_technologie,0.95,0,15
+LGI,Génie Informatique,Sciences et Technologie,anglais,0.6,0,8
+LGM,Génie Mécanique,Sciences et Technologie,mathematiques,0.85,1,13
+LGM,Génie Mécanique,Sciences et Technologie,physique,0.85,1,13
+LGM,Génie Mécanique,Sciences et Technologie,logique,0.75,1,11
+LGM,Génie Mécanique,Sciences et Technologie,interet_technologie,0.8,0,12
+LGM,Génie Mécanique,Sciences et Technologie,dessin,0.5,0,8
