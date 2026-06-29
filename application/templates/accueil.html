@@ -12,10 +12,26 @@
         body { font-family: 'Inter', sans-serif; background: #f6f8fb; color: #172033; }
         .topbar { background: #ffffff; border-bottom: 1px solid #e5e7eb; }
         .brand-logo { width: 42px; height: 42px; object-fit: contain; }
-        .hero-logo { width: 118px; height: 118px; object-fit: contain; margin-bottom: 1.25rem; }
-        .hero { min-height: 72vh; display: flex; align-items: center; background: linear-gradient(135deg, #eef6ff, #ffffff 48%, #f5fbf2); }
-        .hero h1 { font-size: clamp(2.3rem, 5vw, 4.8rem); font-weight: 800; line-height: 1; letter-spacing: 0; }
-        .hero p { font-size: 1.1rem; color: #526071; max-width: 760px; }
+        .hero-logo { width: 118px; height: 118px; object-fit: contain; margin-bottom: 1.25rem; background: rgba(255,255,255,.95); padding: .35rem; border-radius: 8px; }
+        .hero { position: relative; min-height: 72vh; display: flex; align-items: center; overflow: hidden; background: #07111f; }
+        .hero::before,
+        .hero::after { content: ""; position: absolute; inset: 0; background-size: cover; background-position: center; animation: heroFade 24s infinite; }
+        .hero::before { background-image: url("/static/IMAGE%20UAC.jpg"); }
+        .hero::after { background-image: url("/static/IMAGE%20UAC%203.jpg"); animation-delay: 12s; opacity: 0; }
+        .hero .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; animation: heroFade 24s infinite; }
+        .hero .slide-2 { background-image: url("/static/IMAGE%20UAC%202.jpg"); animation-delay: 6s; }
+        .hero .slide-4 { background-image: url("/static/IMAGE%20UAC%204.jpg"); animation-delay: 18s; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4, 10, 22, .86), rgba(4, 10, 22, .58) 52%, rgba(4, 10, 22, .25)); z-index: 1; }
+        .hero .container { position: relative; z-index: 2; }
+        .hero h1 { color: #ffffff; font-size: clamp(2.3rem, 5vw, 4.8rem); font-weight: 800; line-height: 1; letter-spacing: 0; text-shadow: 0 10px 28px rgba(0,0,0,.38); }
+        .hero p { font-size: 1.1rem; color: #e5edf8; max-width: 760px; }
+        .hero .btn-outline-primary { color: #ffffff; border-color: rgba(255,255,255,.78); background: rgba(255,255,255,.08); }
+        .hero .btn-outline-primary:hover { background: #ffffff; color: #2563eb; }
+        @keyframes heroFade {
+            0%, 20% { opacity: 1; transform: scale(1); }
+            25%, 95% { opacity: 0; transform: scale(1.04); }
+            100% { opacity: 1; transform: scale(1); }
+        }
         .section { padding: 4.5rem 0; }
         .info-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; height: 100%; }
         .filiere-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; height: 100%; }
@@ -36,6 +52,9 @@
     </nav>
 
     <header class="hero">
+        <div class="slide slide-2"></div>
+        <div class="slide slide-4"></div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="col-lg-10">
                 <img src="/static/LOGO-UAC.png" alt="Logo de l'Université de l'Assomption au Congo" class="hero-logo">
