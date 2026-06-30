@@ -35,6 +35,9 @@
         .section { padding: 4.5rem 0; }
         .info-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; height: 100%; }
         .filiere-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; height: 100%; }
+        .guide-section { background: #f6f8fb; }
+        .guide-step { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.25rem; height: 100%; }
+        .guide-number { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 8px; background: #2563eb; color: #fff; font-weight: 800; }
         .code { display: inline-flex; align-items: center; justify-content: center; min-width: 58px; height: 32px; border-radius: 6px; background: #eaf2ff; color: #2563eb; font-weight: 800; }
         .btn-primary { background: #2563eb; border-color: #2563eb; }
         .btn { border-radius: 6px; font-weight: 700; padding: .8rem 1.1rem; }
@@ -102,6 +105,73 @@
                     </div>
                 </div>
                 {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section guide-section">
+        <div class="container">
+            <div class="row align-items-end mb-4">
+                <div class="col-lg-8">
+                    <span class="badge text-bg-primary mb-2">Guide étudiant</span>
+                    <h2 class="fw-bold mb-2">Comment utiliser SERAP-UAC de A à Z</h2>
+                    <p class="text-muted mb-0">Suivez ces étapes pour créer votre compte, remplir votre profil et comprendre les recommandations proposées par le système.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <a href="/inscription" class="btn btn-primary"><i class="fas fa-user-plus me-2"></i>Commencer maintenant</a>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">1</span>
+                        <h5 class="fw-bold">Créer votre compte</h5>
+                        <p class="text-muted mb-0">Cliquez sur inscription, renseignez votre nom, votre email et un mot de passe pour ouvrir votre espace étudiant.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">2</span>
+                        <h5 class="fw-bold">Vous connecter</h5>
+                        <p class="text-muted mb-0">Après l’inscription, connectez-vous avec votre email et votre mot de passe pour accéder au formulaire d’évaluation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">3</span>
+                        <h5 class="fw-bold">Remplir vos notes</h5>
+                        <p class="text-muted mb-0">Saisissez vos résultats sur 20 dans les matières demandées. Laissez vide une matière que vous ne connaissez pas.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">4</span>
+                        <h5 class="fw-bold">Indiquer vos compétences</h5>
+                        <p class="text-muted mb-0">Ajoutez vos aptitudes transversales comme la communication, le leadership, l’empathie ou le travail de terrain.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">5</span>
+                        <h5 class="fw-bold">Préciser vos intérêts</h5>
+                        <p class="text-muted mb-0">Notez vos centres d’intérêt pour le social, les affaires, l’environnement ou la technologie afin d’affiner l’orientation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4">
+                    <div class="guide-step">
+                        <span class="guide-number mb-3">6</span>
+                        <h5 class="fw-bold">Lire les résultats</h5>
+                        <p class="text-muted mb-0">Consultez les filières recommandées, les scores et les explications pour comprendre pourquoi elles correspondent à votre profil.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-white border rounded-3">
+                <h5 class="fw-bold"><i class="fas fa-circle-info text-primary me-2"></i>Conseil important</h5>
+                <p class="text-muted mb-3">La recommandation aide à l’orientation, mais elle ne remplace pas les conditions officielles d’admission ni l’avis du service académique.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="/inscription" class="btn btn-primary"><i class="fas fa-user-plus me-2"></i>Créer mon compte</a>
+                    <a href="/connexion" class="btn btn-outline-primary"><i class="fas fa-right-to-bracket me-2"></i>Me connecter</a>
+                </div>
             </div>
         </div>
     </section>
