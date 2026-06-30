@@ -151,6 +151,27 @@ def supprimer_session(token: str, db_path: Path = CHEMIN_BD) -> None:
         conn.execute("DELETE FROM session_utilisateur WHERE token = ?", (token,))
 
 
+def lister_utilisateurs(db_path: Path = CHEMIN_BD) -> List[Dict[str, Any]]:
+    with _connect(db_path) as conn:
+        lignes = conn.execute(
+            """
+            SELECT id, nom, email, role, created_at
+            FROM utilisateur
+            ORDER BY id DESC
+            """
+        ).fetchall()
+    return [
+        {
+            "id": int(ligne["id"]),
+            "nom": str(ligne["nom"]),
+            "email": str(ligne["email"]),
+            "role": str(ligne["role"]),
+            "created_at": str(ligne["created_at"]),
+        }
+        for ligne in lignes
+    ]
+
+
 def enregistrer_recommandation(
     profil: Dict[str, Optional[float]],
     resultat: Dict[str, Any],

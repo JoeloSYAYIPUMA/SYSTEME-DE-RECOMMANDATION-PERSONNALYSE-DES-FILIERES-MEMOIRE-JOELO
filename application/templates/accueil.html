@@ -9,8 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #f6f8fb; color: #172033; }
-        .topbar { background: #ffffff; border-bottom: 1px solid #e5e7eb; }
+        :root { --page-bg: #f6f8fb; --surface: #ffffff; --text-main: #172033; --text-muted: #526071; --border: #e5e7eb; }
+        [data-bs-theme="dark"] { --page-bg: #07111f; --surface: #111827; --text-main: #f8fafc; --text-muted: #cbd5e1; --border: #243244; }
+        body { font-family: 'Inter', sans-serif; background: var(--page-bg); color: var(--text-main); }
+        .topbar { background: var(--surface); border-bottom: 1px solid var(--border); }
         .brand-logo { width: 42px; height: 42px; object-fit: contain; }
         .hero-logo { width: 118px; height: 118px; object-fit: contain; margin-bottom: 1.25rem; background: rgba(255,255,255,.95); padding: .35rem; border-radius: 8px; }
         .hero { position: relative; min-height: 72vh; display: flex; align-items: center; overflow: hidden; background: #07111f; }
@@ -33,10 +35,10 @@
             100% { opacity: 1; transform: scale(1); }
         }
         .section { padding: 4.5rem 0; }
-        .info-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; height: 100%; }
-        .filiere-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; height: 100%; }
-        .guide-section { background: #f6f8fb; }
-        .guide-step { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.25rem; height: 100%; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; height: 100%; }
+        .filiere-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; height: 100%; }
+        .guide-section { background: var(--page-bg); }
+        .guide-step { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; height: 100%; }
         .guide-number { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 8px; background: #2563eb; color: #fff; font-weight: 800; }
         .code { display: inline-flex; align-items: center; justify-content: center; min-width: 58px; height: 32px; border-radius: 6px; background: #eaf2ff; color: #2563eb; font-weight: 800; }
         .btn-primary { background: #2563eb; border-color: #2563eb; }
@@ -46,8 +48,9 @@
 <body>
     <nav class="topbar py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand fw-bold text-decoration-none text-dark d-flex align-items-center gap-2" href="/"><img src="/static/LOGO-UAC.png" alt="Logo UAC" class="brand-logo">SERAP-UAC</a>
+            <a class="navbar-brand fw-bold text-decoration-none d-flex align-items-center gap-2" href="/"><img src="/static/LOGO-UAC.png" alt="Logo UAC" class="brand-logo">SERAP-UAC</a>
             <div class="d-flex gap-2">
+                <button type="button" id="themeToggle" class="btn btn-outline-secondary"><i class="fas fa-moon me-2"></i>Sombre</button>
                 <a href="/connexion" class="btn btn-outline-primary"><i class="fas fa-right-to-bracket me-2"></i>Connexion</a>
                 <a href="/inscription" class="btn btn-primary"><i class="fas fa-user-plus me-2"></i>Inscription</a>
             </div>
@@ -175,5 +178,16 @@
             </div>
         </div>
     </section>
+    <script>
+        const root = document.documentElement;
+        const themeBtn = document.getElementById('themeToggle');
+        function applyTheme(theme) {
+            root.setAttribute('data-bs-theme', theme);
+            localStorage.setItem('serap_theme', theme);
+            themeBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun me-2"></i>Clair' : '<i class="fas fa-moon me-2"></i>Sombre';
+        }
+        applyTheme(localStorage.getItem('serap_theme') || 'light');
+        themeBtn.addEventListener('click', () => applyTheme(root.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark'));
+    </script>
 </body>
 </html>

@@ -20,6 +20,8 @@
         .sidebar-link:hover, .sidebar-link.active { background: rgba(59, 130, 246, .12); color: var(--serap-primary); }
         .main-content { margin-left: 280px; min-height: 100vh; padding: 2rem; }
         .card { background: var(--serap-surface); border: 1px solid var(--serap-border); border-radius: 8px; box-shadow: var(--serap-shadow); }
+        .table { --bs-table-bg: transparent; --bs-table-color: var(--serap-text); --bs-table-border-color: var(--serap-border); }
+        .role-badge { border-radius: 999px; padding: .35rem .65rem; font-weight: 800; font-size: .75rem; }
         .btn { border-radius: 6px; font-weight: 700; }
         @media (max-width: 768px) { .sidebar { position: static; width: 100%; height: auto; } .main-content { margin-left: 0; padding: 1rem; } }
     </style>
@@ -75,6 +77,45 @@
                             <button type="submit" class="btn btn-primary"><i class="fas fa-user-plus me-2"></i>Creer l'utilisateur</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h2 class="h5 fw-bold mb-1">Liste de tous les utilisateurs</h2>
+                            <p class="text-muted mb-0">Tous les comptes crees dans le systeme.</p>
+                        </div>
+                        <span class="badge text-bg-primary">{{ utilisateurs|length }} utilisateur(s)</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Nom complet</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Date creation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for compte in utilisateurs %}
+                                <tr>
+                                    <td class="fw-bold">{{ compte.nom }}</td>
+                                    <td>{{ compte.email }}</td>
+                                    <td>
+                                        {% if compte.role == "admin" %}
+                                        <span class="role-badge text-bg-warning">Admin / Responsable</span>
+                                        {% else %}
+                                        <span class="role-badge text-bg-info">Etudiant</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ compte.created_at }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

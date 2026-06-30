@@ -19,6 +19,7 @@ from application.db import (
     init_db,
     lister_items,
     lister_sessions,
+    lister_utilisateurs,
     supprimer_session,
     utilisateur_par_token,
 )  # Importe la persistance SQLite.
@@ -228,7 +229,7 @@ def page_admin_utilisateurs(request: Request) -> Response:
     return templates.TemplateResponse(
         request,
         "admin_utilisateurs.html",
-        {"request": request, "user": utilisateur_connecte(request), "erreur": "", "succes": ""},
+        {"request": request, "user": utilisateur_connecte(request), "utilisateurs": lister_utilisateurs(), "erreur": "", "succes": ""},
     )
 
 
@@ -250,6 +251,7 @@ def creer_utilisateur_admin(
             {
                 "request": request,
                 "user": utilisateur_connecte(request),
+                "utilisateurs": lister_utilisateurs(),
                 "erreur": "Le mot de passe doit contenir au moins 6 caracteres.",
                 "succes": "",
             },
@@ -258,6 +260,7 @@ def creer_utilisateur_admin(
     contexte = {
         "request": request,
         "user": utilisateur_connecte(request),
+        "utilisateurs": lister_utilisateurs(),
         "erreur": "" if ok else message,
         "succes": message if ok else "",
     }
