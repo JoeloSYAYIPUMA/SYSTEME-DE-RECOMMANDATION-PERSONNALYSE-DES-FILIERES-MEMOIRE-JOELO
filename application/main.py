@@ -220,6 +220,50 @@ def page_dashboard(request: Request) -> Response:
     return templates.TemplateResponse(request, "dashboard.html", {"request": request, "user": utilisateur_connecte(request)})
 
 
+@app.get("/admin/utilisateurs", response_class=HTMLResponse)
+def page_admin_utilisateurs(request: Request) -> Response:
+    redirection = exiger_admin(request)
+    if redirection:
+        return redirection
+    return templates.TemplateResponse(
+        request,
+        "admin_utilisateurs.html",
+        {"request": request, "user": utilisateur_connecte(request), "erreur": "", "succes": ""},
+    )
+
+
+@app.post("/admin/utilisateurs", response_class=HTMLResponse)
+def creer_utilisateur_admin(
+    request: Request,
+    nom: str = Form(...),
+    email: str = Form(...),
+    mot_de_passe: str = Form(...),
+    role: str = Form("etudiant"),
+) -> Response:
+    redirection = exiger_admin(request)
+    if redirection:
+        return redirection
+    if len(mot_de_passe) < 6:
+        return templates.TemplateResponse(
+            request,
+            "admin_utilisateurs.html",
+            {
+                "request": request,
+                "user": utilisateur_connecte(request),
+                "erreur": "Le mot de passe doit contenir au moins 6 caracteres.",
+                "succes": "",
+            },
+        )
+    ok, message = creer_utilisateur(nom, email, mot_de_passe, role=role)
+    contexte = {
+        "request": request,
+        "user": utilisateur_connecte(request),
+        "erreur": "" if ok else message,
+        "succes": message if ok else "",
+    }
+    return templates.TemplateResponse(request, "admin_utilisateurs.html", contexte)
+
+
 # ============================================
 # API STATISTIQUES AVEC DONNÉES DE DÉMONSTRATION
 # ============================================
